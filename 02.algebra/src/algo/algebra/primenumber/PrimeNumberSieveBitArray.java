@@ -9,12 +9,12 @@ public class PrimeNumberSieveBitArray extends PrimeNumber {
         numbers.set(0, 1, true);
 
         int i = 1;
-        while (Math.pow(i++, 2) < maxNumber) {
+        while (i*i++ < maxNumber) {
             if (numbers.get(i)) {
                 continue;
             }
 
-            for (int j = (int)Math.pow(i, 2); j < maxNumber; j += i) {
+            for (int j = i*i; j < maxNumber; j += i) {
                 numbers.set(j);
             }
         }

@@ -11,7 +11,7 @@ public class PrimeNumberDivIterationArray extends PrimeNumber {
             return false;
         }
 
-        for (int i = 1; Math.pow(getPrimes().get(i-1), 2) <= number; i++) {
+        for (int i = 1; getPrimes().get(i-1)*getPrimes().get(i-1) <= number; i++) {
             if (number % getPrimes().get(i-1) == 0) {
                 return false;
             }

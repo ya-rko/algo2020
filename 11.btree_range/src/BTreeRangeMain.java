@@ -41,14 +41,14 @@ public class BTreeRangeMain {
 
 
     private static final class BTreeRange {
-        private static final BiFunction<Integer, Integer, Integer> FUNC = Math::addExact;
+        private static final BiFunction<Long, Long, Long> FUNC = Math::addExact;
         private static final int DEFAULT_VALUE = 0;
-        private int[] elements;
+        private long[] elements;
 
 
         public BTreeRange(int elementCount) {
             int size = 2 * (1 << (int)(Math.log(elementCount - 1) / Math.log(2) + 1));
-            elements = new int[size];
+            elements = new long[size];
 
             Arrays.fill(elements, DEFAULT_VALUE);
         }
@@ -62,13 +62,13 @@ public class BTreeRangeMain {
         }
 
 
-        public int query(int left, int right) {
+        public long query(int left, int right) {
             return calcRangeFunc(left, right, FUNC);
         }
 
 
-        private int calcRangeFunc(int left, int rigth, BiFunction<Integer, Integer, Integer> func) {
-            int funcResult = DEFAULT_VALUE;
+        private long calcRangeFunc(int left, int rigth, BiFunction<Long, Long, Long> func) {
+            long funcResult = DEFAULT_VALUE;
             int startElement = elements.length / 2;
             left += startElement - 1;
             rigth += startElement - 1;
@@ -88,7 +88,7 @@ public class BTreeRangeMain {
         }
 
 
-        private void update(int index, int value, BiFunction<Integer, Integer, Integer> func) {
+        private void update(int index, int value, BiFunction<Long, Long, Long> func) {
             int startElement = elements.length / 2;
             index += startElement - 1;
             elements[index] = value;

@@ -25,10 +25,16 @@ public class KruskalAlgorithmMain {
         };
 
         long[] edges = KruskalAlgorithm.run(weightedEdges);
+        printMinimalSkeleton(edges);
+    }
 
+
+    private static void printMinimalSkeleton(long[] edges) {
         System.out.println("Minimal skeleton:");
         for (long v : edges) {
-            System.out.print(VERTEX_LETTER[(int)(v >> 32)] + "-" + VERTEX_LETTER[(int)(v & 0xFFFFFFFFL)]);
+            int vertex1 = (int)(v >> 32);
+            int vertex2 = (int)(v & 0xFFFFFFFFL);
+            System.out.print(VERTEX_LETTER[vertex1] + "-" + VERTEX_LETTER[vertex2]);
             System.out.println();
         }
     }

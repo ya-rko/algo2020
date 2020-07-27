@@ -58,6 +58,17 @@ public class FactorArray<T> extends AbstractArray<T> implements Array<T> {
     }
 
 
+    public T set(int index, T value) {
+        if (!checkBounds(index)) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        T oldValue = array[index];
+        array[index] = value;
+        return oldValue;
+    }
+
+
     @Override
     public T remove(int index) {
         T item = array[index];
@@ -65,5 +76,10 @@ public class FactorArray<T> extends AbstractArray<T> implements Array<T> {
         array[size - 1] = null;
         size--;
         return item;
+    }
+
+
+    private boolean checkBounds(int index) {
+        return index >= 0 && index < size;
     }
 }

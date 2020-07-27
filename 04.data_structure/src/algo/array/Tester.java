@@ -197,6 +197,15 @@ public class Tester {
         item = priorityQueue.dequeue();
         assert item.equals("21");
 
+        priorityQueue.enqueue(1000000000, "1000000001");
+        priorityQueue.enqueue(1000000000, "1000000002");
+
+        item = priorityQueue.dequeue();
+        assert item.equals("1000000001");
+
+        item = priorityQueue.dequeue();
+        assert item.equals("1000000002");
+
         item = priorityQueue.dequeue();
         assert item.equals("22");
 
